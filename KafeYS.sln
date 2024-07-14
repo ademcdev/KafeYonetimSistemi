@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafeYS", "KafeYS\KafeYS.csproj", "{EB382951-2A3C-404E-AA87-F9A17419C0F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafeYS.Data", "KafeYS.Data\KafeYS.Data.csproj", "{ADB161E1-B27B-4A53-9C02-8AD40C6EBE38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB382951-2A3C-404E-AA87-F9A17419C0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB382951-2A3C-404E-AA87-F9A17419C0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB382951-2A3C-404E-AA87-F9A17419C0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB382951-2A3C-404E-AA87-F9A17419C0F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB161E1-B27B-4A53-9C02-8AD40C6EBE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB161E1-B27B-4A53-9C02-8AD40C6EBE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB161E1-B27B-4A53-9C02-8AD40C6EBE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB161E1-B27B-4A53-9C02-8AD40C6EBE38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96CAADD4-DB88-451E-9C97-2155DA96F468}
+	EndGlobalSection
+EndGlobal
