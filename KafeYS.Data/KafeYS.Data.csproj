@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessLevel.cs" />
     <Compile Include="Personel.cs" />
     <Compile Include="Kafe.cs" />
     <Compile Include="Kategori.cs" />

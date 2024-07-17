@@ -10,10 +10,10 @@ namespace KafeYS.Data
     public class SiparisDetay
     {
         [Key]
-        public int SiparisId { get; set; }
+        public int SiparisDetayId { get; set; }
 
         [Required]
-        public string UrunId { get; set; }
+        public int UrunId { get; set; }
 
         public virtual Urun Urun { get; set; }
 
@@ -23,12 +23,12 @@ namespace KafeYS.Data
         [Required]
         public decimal UrunFiyat { get; set; }
 
+        [Required]
+        public string TutarTl { get { return Tutar().ToString("c2"); } }
+
         public decimal Tutar()
         {
             return UrunAdet * UrunFiyat;
         }
-
-        [Required]
-        public string TutarTl { get { return Tutar().ToString("c2"); } }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,11 @@ namespace KafeYS.Data
     public class Kafe
     {
         [Key]
-        public int MasaAdet { get; set; } = 10;
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MasaNo { get; set; } = 1;
 
-        public List<Urun> Urunler { get; set; } = new List<Urun>();
+        [Required]
+        public int MasaAdet { get; set; } = 10;
 
         public List<Siparis> AktifSiparisler { get; set; } = new List<Siparis>();
 

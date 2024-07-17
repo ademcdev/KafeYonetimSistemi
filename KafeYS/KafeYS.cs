@@ -20,9 +20,11 @@ namespace KafeYS
 
         public DbSet<Kategori> Kategoriler { get; set; }
 
+        public DbSet<Personel> Personeller { get; set; }
+
         public DbSet<Siparis> Siparisler { get; set; }
 
-        public DbSet<Personel> Personeller {  get; set; }
+        public DbSet<SiparisDetay> SiparisDetaylari { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

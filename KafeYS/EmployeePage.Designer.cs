@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeePage));
             this.panelPersonel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxAccessLevel = new System.Windows.Forms.ComboBox();
             this.maskedTextBoxTelNo = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -42,6 +44,7 @@
             this.textBoxPersonelAd = new System.Windows.Forms.TextBox();
             this.dataGridViewPersonel = new System.Windows.Forms.DataGridView();
             this.PersonelId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YetkiSeviyesi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonelAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonelSoyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonelEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +63,8 @@
             // 
             // panelPersonel
             // 
+            this.panelPersonel.Controls.Add(this.label5);
+            this.panelPersonel.Controls.Add(this.comboBoxAccessLevel);
             this.panelPersonel.Controls.Add(this.maskedTextBoxTelNo);
             this.panelPersonel.Controls.Add(this.label6);
             this.panelPersonel.Controls.Add(this.textBoxPassword);
@@ -76,6 +81,26 @@
             this.panelPersonel.Size = new System.Drawing.Size(253, 585);
             this.panelPersonel.TabIndex = 101;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(14, 483);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 25);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Yetki Seviyesi:";
+            // 
+            // comboBoxAccessLevel
+            // 
+            this.comboBoxAccessLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBoxAccessLevel.FormattingEnabled = true;
+            this.comboBoxAccessLevel.Location = new System.Drawing.Point(19, 511);
+            this.comboBoxAccessLevel.Name = "comboBoxAccessLevel";
+            this.comboBoxAccessLevel.Size = new System.Drawing.Size(217, 37);
+            this.comboBoxAccessLevel.TabIndex = 26;
+            this.comboBoxAccessLevel.Text = "Yetki Seçiniz...";
+            // 
             // maskedTextBoxTelNo
             // 
             this.maskedTextBoxTelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -88,7 +113,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(14, 421);
+            this.label6.Location = new System.Drawing.Point(14, 378);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(153, 25);
             this.label6.TabIndex = 25;
@@ -97,7 +122,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxPassword.Location = new System.Drawing.Point(19, 449);
+            this.textBoxPassword.Location = new System.Drawing.Point(19, 406);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(217, 35);
@@ -174,6 +199,7 @@
             this.dataGridViewPersonel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPersonel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PersonelId,
+            this.YetkiSeviyesi,
             this.PersonelAd,
             this.PersonelSoyad,
             this.PersonelEmail,
@@ -196,47 +222,54 @@
             this.PersonelId.Visible = false;
             this.PersonelId.Width = 82;
             // 
+            // YetkiSeviyesi
+            // 
+            this.YetkiSeviyesi.DataPropertyName = "AccessLevel";
+            this.YetkiSeviyesi.HeaderText = "Yetki Seviyesi";
+            this.YetkiSeviyesi.Name = "YetkiSeviyesi";
+            this.YetkiSeviyesi.Width = 90;
+            // 
             // PersonelAd
             // 
             this.PersonelAd.DataPropertyName = "PersonelAd";
-            this.PersonelAd.HeaderText = "PersonelAd";
+            this.PersonelAd.HeaderText = "Personel Adı";
             this.PersonelAd.Name = "PersonelAd";
-            this.PersonelAd.Width = 86;
+            this.PersonelAd.Width = 84;
             // 
             // PersonelSoyad
             // 
             this.PersonelSoyad.DataPropertyName = "PersonelSoyad";
-            this.PersonelSoyad.HeaderText = "PersonelSoyad";
+            this.PersonelSoyad.HeaderText = "Personel Soyadı";
             this.PersonelSoyad.Name = "PersonelSoyad";
-            this.PersonelSoyad.Width = 103;
+            this.PersonelSoyad.Width = 99;
             // 
             // PersonelEmail
             // 
             this.PersonelEmail.DataPropertyName = "PersonelEmail";
-            this.PersonelEmail.HeaderText = "PersonelEmail";
+            this.PersonelEmail.HeaderText = "Personel Email";
             this.PersonelEmail.Name = "PersonelEmail";
-            this.PersonelEmail.Width = 98;
+            this.PersonelEmail.Width = 93;
             // 
             // PersonelTelNo
             // 
             this.PersonelTelNo.DataPropertyName = "PersonelTelNo";
-            this.PersonelTelNo.HeaderText = "PersonelTelNo";
+            this.PersonelTelNo.HeaderText = "Personel Telefon Numarası";
             this.PersonelTelNo.Name = "PersonelTelNo";
-            this.PersonelTelNo.Width = 102;
+            this.PersonelTelNo.Width = 145;
             // 
             // PersenolİseGirisTarih
             // 
             this.PersenolİseGirisTarih.DataPropertyName = "PersonelİseGirisTarih";
-            this.PersenolİseGirisTarih.HeaderText = "PersenolİseGirisTarih";
+            this.PersenolİseGirisTarih.HeaderText = "Persenol İşe Giriş Tarihi";
             this.PersenolİseGirisTarih.Name = "PersenolİseGirisTarih";
-            this.PersenolİseGirisTarih.Width = 131;
+            this.PersenolİseGirisTarih.Width = 106;
             // 
             // PersonelSifre
             // 
             this.PersonelSifre.DataPropertyName = "PersonelSifre";
-            this.PersonelSifre.HeaderText = "PersonelSifre";
+            this.PersonelSifre.HeaderText = "Personel Şifre";
             this.PersonelSifre.Name = "PersonelSifre";
-            this.PersonelSifre.Width = 94;
+            this.PersonelSifre.Width = 89;
             // 
             // menuStrip2
             // 
@@ -294,6 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1027, 585);
+            this.ControlBox = false;
             this.Controls.Add(this.panelPersonel);
             this.Controls.Add(this.dataGridViewPersonel);
             this.Controls.Add(this.menuStrip2);
@@ -328,13 +362,16 @@
         private System.Windows.Forms.TextBox textBoxPersonelEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPersonelSoyad;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxTelNo;
+        private System.Windows.Forms.ComboBox comboBoxAccessLevel;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn YetkiSeviyesi;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelSoyad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelTelNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersenolİseGirisTarih;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelSifre;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxTelNo;
     }
 }

@@ -87,6 +87,7 @@ namespace KafeYS
             foreach (var category in categories)
             {
                 comboBoxCategory.Items.Add(category);
+                Console.WriteLine(category);
             }
 
             comboBoxCategory.DisplayMember = "KategoriAd";

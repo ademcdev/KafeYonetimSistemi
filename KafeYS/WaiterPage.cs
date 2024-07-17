@@ -15,15 +15,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace KafeYS
 {
-    public partial class MainPage : Form
+    public partial class WaiterPage : Form
     {
         private KafeYS db;
         private Kafe kafe;
+        private OrderStatus order;
+        public event EventHandler<MasaTasindi> MasaTasindi;
 
-        public MainPage()
+        public WaiterPage()
         {
             InitializeComponent();
             db = new KafeYS();
+            order = new OrderStatus();
             ReadData();
             LoadTables();
         }
@@ -31,11 +34,47 @@ namespace KafeYS
         private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveData();
+
+        }
+
+        private void listViewTables_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem lvItem = listViewTables.SelectedItems[0];
+            int MasaNo = (int)lvItem.Tag;
+
+            //kafe.AktifSiparisler = order.GetActiveOrders();
+            Siparis siparis = order.GetActiveOrders().FirstOrDefault(x => x.MasaNo == MasaNo);
+
+            if (siparis == null)
+            {
+                siparis = new Siparis() { MasaNo = MasaNo };
+                kafe.AktifSiparisler.Add(siparis);
+                lvItem.ImageKey = "occupied";
+            }
+
+            SiparisForm siparisForm = new SiparisForm(db, siparis);
+            DialogResult dialogResult = siparisForm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                lvItem.ImageKey = "empty";
+            }
         }
 
         private void masaTaşıToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (listViewTables.SelectedItems.Count > 0)
+            {
+                ListViewItem lvItem = listViewTables.SelectedItems[0];
+                int eskiMasaNo = (int)lvItem.Tag;
 
+                int yeniMasaNo = NewTable(eskiMasaNo);
+
+                if (yeniMasaNo != 0)
+                {
+                    OnTableChange(new MasaTasindi(eskiMasaNo, yeniMasaNo));
+                }
+            }
         }
 
         private void aktifSiparişlerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,21 +87,10 @@ namespace KafeYS
 
         }
 
-        private void raporHazırlaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void yönetimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ürünlerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProductPage productPage = new ProductPage(db);
-            productPage.ShowDialog();
-        }
-
-        private void çalışanlarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EmployeePage employeePage = new EmployeePage(db);
-            employeePage.ShowDialog();
+            ManagementPage management = new ManagementPage();
+            management.ShowDialog();
         }
 
         private void çıkışYapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,7 +106,7 @@ namespace KafeYS
             {
                 Application.Exit();
             }
-        }
+         }
 
         private void LoadTables()
         {
@@ -86,8 +114,8 @@ namespace KafeYS
             {
                 ImageList imageList = new ImageList();
 
-                imageList.Images.Add("Empty", Resources.EmptyTable128);
-                imageList.Images.Add("Occupied", Resources.OccupiedTable);
+                imageList.Images.Add("empty", Resources.EmptyTable128);
+                imageList.Images.Add("occupied", Resources.OccupiedTable);
                 imageList.ImageSize = new Size(128, 128);
 
                 listViewTables.LargeImageList = imageList;
@@ -149,6 +177,19 @@ namespace KafeYS
             }
         }
 
-        
+        private int NewTable(int eskiMasaNo)
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox($"Masa {eskiMasaNo} için yeni masa numarasını girin:", "Masa Taşı", "");
+            if (int.TryParse(input, out int yeniMasaNo))
+            {
+                return yeniMasaNo;
+            }
+            return 0;
+        }
+
+        protected virtual void OnTableChange(MasaTasindi e)
+        {
+            MasaTasindi?.Invoke(this, e);
+        }
     }
 }

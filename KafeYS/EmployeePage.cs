@@ -71,6 +71,8 @@ namespace KafeYS
             var personeller = db.Personeller.ToList();
             BListPersoneller = new BindingList<Personel>(personeller);
             dataGridViewPersonel.DataSource = BListPersoneller;
+
+            comboBoxAccessLevel.DataSource = Enum.GetValues(typeof(AccessLevel));
         }
 
         private void AddPersonel()
@@ -88,13 +90,14 @@ namespace KafeYS
                     PersonelEmail = textBoxPersonelEmail.Text.Trim(),
                     PersonelTelNo = maskedTextBoxTelNo.Text.Trim(),
                     PersonelİseGirisTarih = DateTime.Now,
-                    PersonelSifre = textBoxPassword.Text
+                    PersonelSifre = textBoxPassword.Text,
+                    AccessLevel = (AccessLevel)comboBoxAccessLevel.SelectedItem
                 };
 
                 db.Personeller.Add(yeniPersonel);
                 db.SaveChanges();
                 BListPersoneller.Add(yeniPersonel);
-                MessageBox.Show("Ürün başarıyla eklendi!", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Personel başarıyla eklendi!", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ResetForm(this);
             }

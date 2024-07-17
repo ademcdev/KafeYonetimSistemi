@@ -51,6 +51,9 @@ namespace KafeYS.Data
             }
         }
 
+        [Required]
+        public AccessLevel AccessLevel { get; set; }
+
         public virtual ICollection<Siparis> Siparisler { get; set; }
     }
 }

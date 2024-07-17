@@ -131,6 +131,7 @@
             // 
             // GeriDonToolStripMenuItem
             // 
+            this.GeriDonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.GeriDonToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.GeriDonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("GeriDonToolStripMenuItem.Image")));
             this.GeriDonToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;

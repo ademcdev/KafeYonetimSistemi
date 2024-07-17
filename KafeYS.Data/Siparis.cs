@@ -10,7 +10,12 @@ namespace KafeYS.Data
     public class Siparis
     {
         [Key]
+        public int SiparisId { get; set; }
+
+        [Required]
         public int MasaNo { get; set; }
+
+        public virtual Kafe Kafe { get; set; }
 
         public SiparisDurum Durum { get; set; }
 
@@ -27,12 +32,6 @@ namespace KafeYS.Data
 
         [Required]
         public string ToplamTutarTL => ToplamTutar().ToString();
-
-        public int SiparisId { get; set; }
-
-        public virtual SiparisDetay SiparisDetay { get; set; }
-
-
 
         public decimal ToplamTutar()
         {
