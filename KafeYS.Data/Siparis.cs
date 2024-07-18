@@ -25,21 +25,28 @@ namespace KafeYS.Data
         [Required]
         public DateTime? SAcilisZamani { get; set; }
 
-        [Required]
         public DateTime? SKapanisZamani { get; set; }
 
-        public List<SiparisDetay> SiparisDetaylari { get; set; } = new List<SiparisDetay>();
-
-        [Required]
-        public string ToplamTutarTL => ToplamTutar().ToString();
-
-        public decimal ToplamTutar()
-        {
-            return SiparisDetaylari.Sum(x => x.Tutar());
-        }
+        //public List<SiparisDetay> SiparisDetaylari { get; set; } = new List<SiparisDetay>();
 
         public int PersonelId { get; set; }
 
         public virtual Personel Personeller { get; set; }
+
+        public virtual ICollection<SiparisDetay> SiparisDetaylari { get; set; }
+
+        public Siparis()
+        {
+            SiparisDetaylari = new HashSet<SiparisDetay>();
+        }
+
+        [Required]
+        public decimal ToplamTutar
+        {
+            get
+            {
+                return SiparisDetaylari.Sum(sd => sd.UrunFiyat * sd.UrunAdet);
+            }
+        }
     }
 }

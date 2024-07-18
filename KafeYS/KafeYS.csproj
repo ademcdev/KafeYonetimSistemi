@@ -96,14 +96,11 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MasaTasindi.cs" />
-    <Compile Include="Migrations\202407161130269_masanoautoincrementoff.cs" />
-    <Compile Include="Migrations\202407161130269_masanoautoincrementoff.Designer.cs">
-      <DependentUpon>202407161130269_masanoautoincrementoff.cs</DependentUpon>
+    <Compile Include="Migrations\202407180838493_InitialCreate.cs" />
+    <Compile Include="Migrations\202407180838493_InitialCreate.Designer.cs">
+      <DependentUpon>202407180838493_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202407170803379_stringid.cs" />
-    <Compile Include="Migrations\202407170803379_stringid.Designer.cs">
-      <DependentUpon>202407170803379_stringid.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="SiparisForm.cs">
       <SubType>Form</SubType>
@@ -117,16 +114,7 @@
     <Compile Include="WaiterPage.Designer.cs">
       <DependentUpon>WaiterPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="KafeYS.cs" />
-    <Compile Include="Migrations\202407160755580_InitialCreate.cs" />
-    <Compile Include="Migrations\202407160755580_InitialCreate.Designer.cs">
-      <DependentUpon>202407160755580_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407160811078_AddPersonelAndAccessLevel.cs" />
-    <Compile Include="Migrations\202407160811078_AddPersonelAndAccessLevel.Designer.cs">
-      <DependentUpon>202407160811078_AddPersonelAndAccessLevel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="KafeDbContext.cs" />
     <Compile Include="ProductPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,23 +132,14 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407161130269_masanoautoincrementoff.resx">
-      <DependentUpon>202407161130269_masanoautoincrementoff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407170803379_stringid.resx">
-      <DependentUpon>202407170803379_stringid.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202407180838493_InitialCreate.resx">
+      <DependentUpon>202407180838493_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SiparisForm.resx">
       <DependentUpon>SiparisForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WaiterPage.resx">
       <DependentUpon>WaiterPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407160755580_InitialCreate.resx">
-      <DependentUpon>202407160755580_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407160811078_AddPersonelAndAccessLevel.resx">
-      <DependentUpon>202407160811078_AddPersonelAndAccessLevel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductPage.resx">
       <DependentUpon>ProductPage.cs</DependentUpon>
@@ -225,6 +204,7 @@
     <None Include="icons\seat128.png" />
     <Content Include="icons\undo64.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -12,10 +12,10 @@ namespace KafeYS.Data
         [Key]
         public int SiparisDetayId { get; set; }
 
+        public int SiparisId { get; set; }
+
         [Required]
         public int UrunId { get; set; }
-
-        public virtual Urun Urun { get; set; }
 
         [Required]
         public int UrunAdet { get; set; }
@@ -30,5 +30,9 @@ namespace KafeYS.Data
         {
             return UrunAdet * UrunFiyat;
         }
+
+        public virtual Urun Urun { get; set; }
+
+        public virtual Siparis Siparis { get; set; }
     }
 }

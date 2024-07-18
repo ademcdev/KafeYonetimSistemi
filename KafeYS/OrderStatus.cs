@@ -11,7 +11,7 @@ namespace KafeYS
     {
         public List<Siparis> GetActiveOrders()
         {
-            using (var context = new KafeYS())
+            using (var context = new KafeDbContext())
             {
                 return context.Siparisler
                     .Where(s => s.Durum == SiparisDurum.Aktif)
@@ -21,7 +21,7 @@ namespace KafeYS
 
         public List<Siparis> GetPastOrders()
         {
-            using (var context = new KafeYS())
+            using (var context = new KafeDbContext())
             {
                 return context.Siparisler
                     .Where(s => s.Durum == SiparisDurum.Odendi || s.Durum == SiparisDurum.Iptal)

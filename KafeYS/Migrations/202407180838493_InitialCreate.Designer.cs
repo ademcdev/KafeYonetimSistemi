@@ -7,13 +7,13 @@ namespace KafeYS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class masanoautoincrementoff : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(masanoautoincrementoff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202407161130269_masanoautoincrementoff"; }
+            get { return "202407180838493_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

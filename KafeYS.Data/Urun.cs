@@ -21,10 +21,10 @@ namespace KafeYS.Data
             return string.Format("{0} ({1:n2})", UrunAd, BirimFiyat);
         }
 
-        //public int MarkaId { get; set; }
         public int KategoriId { get; set; }
 
-        //public virtual Marka Marka { get; set; }
         public virtual Kategori Kategori { get; set; }
+
+        public virtual ICollection<SiparisDetay> SiparisDetaylari { get; set; }
     }
 }

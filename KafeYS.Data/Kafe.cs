@@ -16,9 +16,5 @@ namespace KafeYS.Data
 
         [Required]
         public int MasaAdet { get; set; } = 10;
-
-        public List<Siparis> AktifSiparisler { get; set; } = new List<Siparis>();
-
-        public List<Siparis> GecmisSiparisler { get; set; } = new List<Siparis>();
     }
 }

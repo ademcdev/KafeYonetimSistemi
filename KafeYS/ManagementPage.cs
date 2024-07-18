@@ -13,12 +13,12 @@ namespace KafeYS
 {
     public partial class ManagementPage : Form
     {
-        private KafeYS db;
+        private KafeDbContext db;
 
         public ManagementPage()
         {
             InitializeComponent();
-            db = new KafeYS();
+            db = new KafeDbContext();
         }
 
         private void ürünlerToolStripMenuItem_Click(object sender, EventArgs e)

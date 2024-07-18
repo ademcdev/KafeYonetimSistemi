@@ -19,8 +19,6 @@ namespace KafeYS.Data
 
         public string ImageUrl { get; set; }
 
-        //public virtual ICollection<Marka> Markalar { get; set; }
-
         public virtual ICollection<Urun> Urunler { get; set; }
     }
 }

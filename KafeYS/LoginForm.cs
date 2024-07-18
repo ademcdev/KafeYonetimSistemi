@@ -18,6 +18,7 @@ namespace KafeYS
     public partial class LoginForm : Form
     {
         public AccessLevel UserAccessLevel {  get; private set; }
+
         private Dictionary<TextBox, string> placeholders = new Dictionary<TextBox, string>();
 
         public LoginForm()
@@ -45,11 +46,10 @@ namespace KafeYS
 
         private new void Validate()
         {
-            using (var db = new KafeYS())
+            using (var db = new KafeDbContext())
             {
                 string email = textBoxEmail.Text;
                 string password = textBoxPassword.Text;
-
                 string hashedPassword = HashPassword(password);
 
                 var personel = db.Personeller.FirstOrDefault(p => p.PersonelEmail == email && p.PersonelSifre == hashedPassword);
@@ -57,7 +57,7 @@ namespace KafeYS
                 if (personel != null)
                 {
                     UserAccessLevel = personel.AccessLevel;
-                    Console.WriteLine(UserAccessLevel);
+                    int personelId = personel.PersonelId;
                     Form mainPage = null;
 
                     if (UserAccessLevel == AccessLevel.Admin)
@@ -70,7 +70,7 @@ namespace KafeYS
                     }
                     else if (UserAccessLevel == AccessLevel.Waiter)
                     {
-                        mainPage = new WaiterPage();
+                        mainPage = new WaiterPage(personelId);
                     }
                     else
                     {

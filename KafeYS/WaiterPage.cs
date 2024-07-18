@@ -17,18 +17,20 @@ namespace KafeYS
 {
     public partial class WaiterPage : Form
     {
-        private KafeYS db;
+        private KafeDbContext db;
         private Kafe kafe;
         private OrderStatus order;
         public event EventHandler<MasaTasindi> MasaTasindi;
+        private int personelId;
 
-        public WaiterPage()
+        public WaiterPage(int personelId)
         {
             InitializeComponent();
-            db = new KafeYS();
+            db = new KafeDbContext();
             order = new OrderStatus();
             ReadData();
             LoadTables();
+            this.personelId = personelId;
         }
 
         private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,17 +44,24 @@ namespace KafeYS
             ListViewItem lvItem = listViewTables.SelectedItems[0];
             int MasaNo = (int)lvItem.Tag;
 
-            //kafe.AktifSiparisler = order.GetActiveOrders();
             Siparis siparis = order.GetActiveOrders().FirstOrDefault(x => x.MasaNo == MasaNo);
 
             if (siparis == null)
             {
-                siparis = new Siparis() { MasaNo = MasaNo };
-                kafe.AktifSiparisler.Add(siparis);
+                siparis = new Siparis()
+                {
+                    MasaNo = MasaNo,
+                    Durum = SiparisDurum.Aktif,
+                    SAcilisZamani = DateTime.Now,
+                    PersonelId = personelId
+                };
+
+                db.Siparisler.Add(siparis);
+                db.SaveChanges();
                 lvItem.ImageKey = "occupied";
             }
 
-            SiparisForm siparisForm = new SiparisForm(db, siparis);
+            SiparisForm siparisForm = new SiparisForm(db, siparis, MasaNo);
             DialogResult dialogResult = siparisForm.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
@@ -121,7 +130,7 @@ namespace KafeYS
                 listViewTables.LargeImageList = imageList;
             }
 
-            var AktifSiparisler = kafe.AktifSiparisler.ToList();
+            var AktifSiparisler = order.GetActiveOrders().ToList();
 
             var AktifSiparisKontrol = AktifSiparisler.ToLookup(x => x.MasaNo);
 

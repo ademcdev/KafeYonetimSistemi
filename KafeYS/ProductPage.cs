@@ -13,10 +13,10 @@ namespace KafeYS
 {
     public partial class ProductPage : Form
     {
-        KafeYS db;
+        KafeDbContext db;
         BindingList<Urun> BListUrunler;
 
-        public ProductPage(KafeYS kafeYS)
+        public ProductPage(KafeDbContext kafeYS)
         {
             db = kafeYS;
             InitializeComponent();
@@ -87,7 +87,6 @@ namespace KafeYS
             foreach (var category in categories)
             {
                 comboBoxCategory.Items.Add(category);
-                Console.WriteLine(category);
             }
 
             comboBoxCategory.DisplayMember = "KategoriAd";

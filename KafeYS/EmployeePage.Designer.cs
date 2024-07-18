@@ -44,6 +44,7 @@
             this.textBoxPersonelAd = new System.Windows.Forms.TextBox();
             this.dataGridViewPersonel = new System.Windows.Forms.DataGridView();
             this.PersonelId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.YetkiSeviyesi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonelAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonelSoyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -199,6 +200,7 @@
             this.dataGridViewPersonel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPersonel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PersonelId,
+            this.IsActive,
             this.YetkiSeviyesi,
             this.PersonelAd,
             this.PersonelSoyad,
@@ -212,6 +214,9 @@
             this.dataGridViewPersonel.Name = "dataGridViewPersonel";
             this.dataGridViewPersonel.Size = new System.Drawing.Size(885, 585);
             this.dataGridViewPersonel.TabIndex = 100;
+            this.dataGridViewPersonel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPersonel_CellContentClick);
+            this.dataGridViewPersonel.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPersonel_CellEndEdit);
+            this.dataGridViewPersonel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPersonel_CellValueChanged);
             this.dataGridViewPersonel.SelectionChanged += new System.EventHandler(this.dataGridViewPersonel_SelectionChanged);
             // 
             // PersonelId
@@ -221,6 +226,13 @@
             this.PersonelId.Name = "PersonelId";
             this.PersonelId.Visible = false;
             this.PersonelId.Width = 82;
+            // 
+            // IsActive
+            // 
+            this.IsActive.DataPropertyName = "IsActive";
+            this.IsActive.HeaderText = "Aktiflik";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.Width = 44;
             // 
             // YetkiSeviyesi
             // 
@@ -366,6 +378,7 @@
         private System.Windows.Forms.ComboBox comboBoxAccessLevel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelId;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn YetkiSeviyesi;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonelSoyad;

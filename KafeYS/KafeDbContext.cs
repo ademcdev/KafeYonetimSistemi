@@ -7,11 +7,12 @@ using System.Linq;
 
 namespace KafeYS
 {
-    public partial class KafeYS : DbContext
+    public partial class KafeDbContext : DbContext
     {
-        public KafeYS()
+        public KafeDbContext()
             : base("name=KafeYS")
         {
+            //this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Kafe> Kafe { get; set; }
@@ -32,7 +33,18 @@ namespace KafeYS
             modelBuilder.Entity<Urun>().ToTable("Urun");
             modelBuilder.Entity<Kategori>().ToTable("Kategori");
             modelBuilder.Entity<Siparis>().ToTable("Siparis");
+            modelBuilder.Entity<SiparisDetay>().ToTable("SiparisDetay");
             modelBuilder.Entity<Personel>().ToTable("Personel");
+
+            modelBuilder.Entity<SiparisDetay>()
+            .HasRequired(sd => sd.Urun)
+            .WithMany(u => u.SiparisDetaylari)
+            .HasForeignKey(sd => sd.UrunId);
+
+            modelBuilder.Entity<SiparisDetay>()
+                .HasRequired(sd => sd.Siparis)
+                .WithMany(s => s.SiparisDetaylari)
+                .HasForeignKey(sd => sd.SiparisId);
 
             base.OnModelCreating(modelBuilder);
         }
