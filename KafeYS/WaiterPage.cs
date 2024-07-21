@@ -31,6 +31,7 @@ namespace KafeYS
             ReadData();
             LoadTables();
             this.personelId = personelId;
+            MasaTasindi += WaiterPage_MasaTasindi;
         }
 
         private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
@@ -86,16 +87,6 @@ namespace KafeYS
             }
         }
 
-        private void aktifSiparişlerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void geçmişSiparişlerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void yönetimToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManagementPage management = new ManagementPage();
@@ -124,16 +115,16 @@ namespace KafeYS
                 ImageList imageList = new ImageList();
 
                 imageList.Images.Add("empty", Resources.EmptyTable128);
-                imageList.Images.Add("occupied", Resources.OccupiedTable);
+                imageList.Images.Add("occupied", Resources.OccupiedTable128);
                 imageList.ImageSize = new Size(128, 128);
 
                 listViewTables.LargeImageList = imageList;
             }
 
+            listViewTables.Items.Clear();
+
             var AktifSiparisler = order.GetActiveOrders().ToList();
-
             var AktifSiparisKontrol = AktifSiparisler.ToLookup(x => x.MasaNo);
-
             var items = new List<ListViewItem>();
 
             for (int i = 1; i <= kafe.MasaAdet; i++)
@@ -177,7 +168,7 @@ namespace KafeYS
         {
             try
             {
-                string json = File.ReadAllText("veri.json");
+                string json = File.ReadAllText("data.json");
                 kafe = JsonConvert.DeserializeObject<Kafe>(json);
             }
             catch (Exception)
@@ -198,7 +189,36 @@ namespace KafeYS
 
         protected virtual void OnTableChange(MasaTasindi e)
         {
+            var oldTableItem = listViewTables.Items.Cast<ListViewItem>().FirstOrDefault(item => (int)item.Tag == e.EskiMasaNo);
+            var newTableItem = listViewTables.Items.Cast<ListViewItem>().FirstOrDefault(item => (int)item.Tag == e.YeniMasaNo);
+
+            if (oldTableItem != null)
+            {
+                oldTableItem.ImageKey = "empty";
+            }
+
+            if (newTableItem != null)
+            {
+                newTableItem.ImageKey = "occupied";
+            }
+
             MasaTasindi?.Invoke(this, e);
+        }
+
+        private void WaiterPage_MasaTasindi(object sender, MasaTasindi e)
+        {
+            var siparis = db.Siparisler
+                .FirstOrDefault(s => s.MasaNo == e.EskiMasaNo && s.Durum == SiparisDurum.Aktif);
+
+            if (siparis != null)
+            {
+                siparis.MasaNo = e.YeniMasaNo;
+                db.SaveChanges();
+
+                LoadTables();
+
+                MessageBox.Show($"Masa {e.EskiMasaNo} taşındı ve Masa {e.YeniMasaNo} olarak güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

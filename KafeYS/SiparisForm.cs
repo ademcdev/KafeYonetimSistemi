@@ -19,27 +19,27 @@ namespace KafeYS
 {
     public partial class SiparisForm : Form
     {
-        KafeDbContext db;
-        Siparis siparis;
-        BindingList<SiparisDetay> BListSiparisDetay;
+        private KafeDbContext db;
+        private Siparis siparis;
+        private BindingList<SiparisDetayViewModel> BListSiparisDetay;
         private int masaNo;
 
-        public SiparisForm(KafeDbContext kafeYS, Siparis siparis, int MasaNo)
+        public SiparisForm(KafeDbContext KafeDbContext, Siparis siparis, int MasaNo)
         {
-            db = kafeYS;
+            db = KafeDbContext;
             this.siparis = siparis;
             InitializeComponent();
             dataGridViewOrderDetails.AutoGenerateColumns = false;
-            LoadData();
             masaNo = MasaNo;
         }
 
         private void SiparisForm_Load(object sender, EventArgs e)
         {
+            LoadData();
+            LoadToplamTutar();
             GetCategories();
             GetProducts();
             labelMasaNo.Text = masaNo.ToString();
-            labelOdemeTutari.Text = "0";
         }
 
         private void comboBoxCategory_SelectionChangeCommitted(object sender, EventArgs e)
@@ -94,7 +94,18 @@ namespace KafeYS
 
                 db.SiparisDetaylari.Add(siparisdetay);
                 db.SaveChanges();
-                BListSiparisDetay.Add(siparisdetay);
+
+                SiparisDetayViewModel viewModel = new SiparisDetayViewModel
+                {
+                    SiparisDetayId = siparisdetay.SiparisDetayId,
+                    SiparisId = siparisdetay.SiparisId,
+                    UrunId = siparisdetay.UrunId,
+                    UrunAd = urun.UrunAd,
+                    UrunAdet = siparisdetay.UrunAdet,
+                    UrunFiyat = siparisdetay.UrunFiyat
+                };
+
+                BListSiparisDetay.Add(viewModel);
                 UpdateTotalPayment();
             }
         }
@@ -119,56 +130,22 @@ namespace KafeYS
 
         private void LoadData()
         {
-            db.Entry(siparis).Collection(s => s.SiparisDetaylari).Load();
-            BListSiparisDetay = new BindingList<SiparisDetay>(siparis.SiparisDetaylari.ToList());
+            var orderDetails = db.SiparisDetaylari
+                             .Include(sd => sd.Urun)
+                             .Where(sd => sd.SiparisId == siparis.SiparisId)
+                             .Select(sd => new SiparisDetayViewModel
+                             {
+                                 SiparisDetayId = sd.SiparisDetayId,
+                                 SiparisId = sd.SiparisId,
+                                 UrunId = sd.UrunId,
+                                 UrunAd = sd.Urun.UrunAd,
+                                 UrunAdet = sd.UrunAdet,
+                                 UrunFiyat = sd.UrunFiyat,
+                             })
+                             .ToList();
+
+            BListSiparisDetay = new BindingList<SiparisDetayViewModel>(orderDetails);
             dataGridViewOrderDetails.DataSource = BListSiparisDetay;
-
-            //using (var context = new KafeYS())
-            //{
-            //    var siparisdetay = db.SiparisDetaylari.Where(sd => sd.SiparisDetayId == siparis.SiparisDetayId).ToList();
-            //    BListSiparisDetay = new BindingList<SiparisDetay>(siparisdetay);
-            //    dataGridViewOrderDetails.DataSource = BListSiparisDetay;
-
-            //    //siparis = context.Siparisler.Include("SiparisDetaylari").SingleOrDefault(s => s.SiparisId == siparis.SiparisId);
-
-            //    //if (siparis != null)
-            //    //{
-            //    //    BListSiparisDetay = new BindingList<SiparisDetay>(siparis.SiparisDetaylari.ToList());
-            //    //    dataGridViewOrderDetails.DataSource = BListSiparisDetay;
-            //    //}
-            //}
-
-            //if (!db.Siparisler.Local.Any(s => s.SiparisId == siparis.SiparisId))
-            //{
-            //    db.Siparisler.Attach(siparis);
-            //}
-
-            //db.Entry(siparis).Collection(s => s.SiparisDetaylari).Query().Include(sd => sd.Urun).Load();
-
-            //var siparisDetayVM = siparis.SiparisDetaylari.Select(sd => new SiparisDetay
-            //{
-            //    SiparisDetayId = sd.SiparisDetayId,
-            //    UrunAd = sd.Urun.UrunAd,
-            //    UrunFiyat = sd.UrunFiyat,
-            //    UrunAdet = sd.UrunAdet,
-            //}).ToList();
-
-            //BListSiparisDetay = new BindingList<SiparisDetay>(siparisDetayVM);
-            //dataGridViewOrderDetails.DataSource = BListSiparisDetay;
-
-            //db.Entry(siparis).Collection(s => s.SiparisDetaylari).Load();
-            //BListSiparisDetay = new BindingList<SiparisDetay>(siparis.SiparisDetaylari.ToList());
-            //dataGridViewOrderDetails.DataSource = BListSiparisDetay;
-
-            //var siparisdetay = siparis.SiparisDetaylari.ToList();
-            //BListSiparisDetay = new BindingList<SiparisDetay>(siparisdetay);
-            //dataGridViewOrderDetails.DataSource = BListSiparisDetay;
-
-
-
-            //db.Entry(siparis).Collection(s => s.SiparisDetaylari).Load();
-            //BListSiparisDetay = new BindingList<SiparisDetay>(siparis.SiparisDetaylari.ToList());
-            //dataGridViewOrderDetails.DataSource = BListSiparisDetay;
         }
 
         private void GetCategories()
@@ -204,40 +181,48 @@ namespace KafeYS
 
         private void UpdateTotalPayment()
         {
-            decimal totalPayment = 0;
-
-            if (siparis != null && siparis.SiparisDetaylari != null)
+            if (siparis != null)
             {
-                totalPayment = siparis.SiparisDetaylari.Sum(sd => sd.UrunFiyat * sd.UrunAdet);
-                labelOdemeTutari.Text = totalPayment.ToString("C");
+                labelOdemeTutari.Text = siparis.ToplamTutar.ToString("c2");
             }
             else
             {
-                labelOdemeTutari.Text = totalPayment.ToString("C");
+                labelOdemeTutari.Text = "0.00";
             }
-
-            //if (siparis != null)
-            //{
-            //    decimal ToplamTutar = siparis.SiparisDetaylari.Sum(sd => sd.UrunFiyat * sd.UrunAdet);
-
-            //    labelOdemeTutari.Text = totalPayment.ToString("C");
-            //}
-
-            //Console.WriteLine(siparisDetay.TutarTl);
-            //Console.WriteLine(siparis.ToplamTutarTL);
-            //labelOdemeTutari.Text = siparis.ToplamTutarTL;
         }
 
         private void CloseOrder(SiparisDurum durum)
         {
-            if (durum == SiparisDurum.Odendi)
-                siparis.OdenenTutar = siparis.ToplamTutar;
+            if (siparis == null)
+            {
+                MessageBox.Show("Sipariş bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            siparis.SKapanisZamani = DateTime.Now;
-            siparis.Durum = durum;
-            db.SaveChanges();
-            BListSiparisDetay.Clear();
-            DialogResult = DialogResult.OK;
+            var existingSiparis = db.Siparisler
+                .Include(s => s.SiparisDetaylari)
+                .FirstOrDefault(s => s.SiparisId == siparis.SiparisId);
+
+            if (existingSiparis != null)
+            {
+                if (durum == SiparisDurum.Odendi)
+                {
+                    existingSiparis.OdenenTutar = existingSiparis.ToplamTutar;
+                }
+
+                existingSiparis.SKapanisZamani = DateTime.Now;
+                existingSiparis.Durum = durum;
+
+                db.Entry(existingSiparis).State = EntityState.Modified;
+                db.SaveChanges();
+
+                BListSiparisDetay.Clear();
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Sipariş bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DeleteProduct()
@@ -246,13 +231,43 @@ namespace KafeYS
 
             if (dialogResult == DialogResult.Yes)
             {
-                DataGridViewRow row = dataGridViewOrderDetails.SelectedRows[0];
-                SiparisDetay siparisDetay = (SiparisDetay)row.DataBoundItem;
-                BListSiparisDetay.Remove(siparisDetay);
-                db.SiparisDetaylari.Remove(siparisDetay);
-                db.SaveChanges();
-                UpdateTotalPayment();
+                if (dataGridViewOrderDetails.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dataGridViewOrderDetails.SelectedRows[0];
+                    SiparisDetayViewModel viewModel = (SiparisDetayViewModel)row.DataBoundItem;
+
+                    using (var db = new KafeDbContext())
+                    {
+                        SiparisDetay siparisDetay = db.SiparisDetaylari.Find(viewModel.SiparisDetayId);
+
+                        if (siparisDetay != null)
+                        {
+                            db.SiparisDetaylari.Remove(siparisDetay);
+                            db.SaveChanges();
+
+                            BListSiparisDetay.Remove(viewModel);
+                            LoadToplamTutar();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen önce silinecek bir satır seçiniz.", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void LoadToplamTutar()
+        {
+            decimal toplamTutar = 0;
+            var siparisDetaylari = db.SiparisDetaylari.Where(sd => sd.SiparisId == siparis.SiparisId).ToList();
+
+            foreach (var urun in siparisDetaylari)
+            {
+                toplamTutar += urun.UrunFiyat * urun.UrunAdet;
+            }
+
+            labelOdemeTutari.Text = toplamTutar.ToString("c2");
         }
     }
 }

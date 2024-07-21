@@ -19,6 +19,7 @@ namespace KafeYS
         {
             InitializeComponent();
             db = new KafeDbContext();
+            LoadReportData();
         }
 
         private void ürünlerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,7 +36,8 @@ namespace KafeYS
 
         private void geçmişSiparişlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PastOrders pastOrders = new PastOrders(db);
+            pastOrders.ShowDialog();
         }
 
         private void raporHazırlaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +58,54 @@ namespace KafeYS
             {
                 Application.Exit();
             }
+        }
+
+        private void LoadReportData()
+        {
+            LoadTotal();
+        }
+
+        private void LoadTotal()
+        {
+            var totalProducts = db.Urunler.Count();
+            var totalPersonels = db.Personeller.Count();
+            var totalOrders = db.Siparisler.Count();
+            //var totalIncome = db.Siparisler.Sum(s => s.ToplamTutar) + " TL";
+
+            labelTotalProducts.Text = totalOrders.ToString();
+            labelTotalPersonels.Text = totalPersonels.ToString();
+            labelTotalOrders.Text = totalPersonels.ToString();
+            //labelIncome.Text = totalIncome.ToString();
+        }
+
+        private void LoadTopProducts()
+        {
+            var topProducts = db.SiparisDetaylari
+                .GroupBy(sd => sd.UrunId)
+                .Select(g => new
+                {
+                    UrunAd = g.FirstOrDefault().Urun.UrunAd,
+                    TotalSales = g.Sum(sd => sd.UrunFiyat * sd.UrunAdet)
+                })
+                .OrderByDescending(p => p.TotalSales)
+                .Take(5)
+                .ToList();
+
+            dataGridViewSiparis.DataSource = topProducts;
+        }
+
+        private void LoadSalesByCategory()
+        {
+            var salesByCategory = db.SiparisDetaylari
+                .GroupBy(sd => sd.Urun.Kategori.KategoriAd)
+                .Select(g => new
+                {
+                    KategoriAd = g.Key,
+                    TotalSales = g.Sum(sd => sd.UrunFiyat * sd.UrunAdet)
+                })
+                .ToList();
+
+            dataGridViewSiparis.DataSource = salesByCategory;
         }
     }
 }

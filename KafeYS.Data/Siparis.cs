@@ -15,8 +15,6 @@ namespace KafeYS.Data
         [Required]
         public int MasaNo { get; set; }
 
-        public virtual Kafe Kafe { get; set; }
-
         public SiparisDurum Durum { get; set; }
 
         [Required]
@@ -45,7 +43,7 @@ namespace KafeYS.Data
         {
             get
             {
-                return SiparisDetaylari.Sum(sd => sd.UrunFiyat * sd.UrunAdet);
+                return SiparisDetaylari.Sum(sd => sd.Tutar());
             }
         }
     }

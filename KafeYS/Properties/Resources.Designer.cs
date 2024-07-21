@@ -83,9 +83,29 @@ namespace KafeYS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OccupiedTable {
+        internal static System.Drawing.Bitmap EmptyTablegap128 {
             get {
-                object obj = ResourceManager.GetObject("OccupiedTable", resourceCulture);
+                object obj = ResourceManager.GetObject("EmptyTablegap128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OccupiedTable128 {
+            get {
+                object obj = ResourceManager.GetObject("OccupiedTable128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OccupiedTable64 {
+            get {
+                object obj = ResourceManager.GetObject("OccupiedTable64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

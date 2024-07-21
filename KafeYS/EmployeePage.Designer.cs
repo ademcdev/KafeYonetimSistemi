@@ -216,7 +216,6 @@
             this.dataGridViewPersonel.TabIndex = 100;
             this.dataGridViewPersonel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPersonel_CellContentClick);
             this.dataGridViewPersonel.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPersonel_CellEndEdit);
-            this.dataGridViewPersonel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPersonel_CellValueChanged);
             this.dataGridViewPersonel.SelectionChanged += new System.EventHandler(this.dataGridViewPersonel_SelectionChanged);
             // 
             // PersonelId

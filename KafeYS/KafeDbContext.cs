@@ -12,7 +12,7 @@ namespace KafeYS
         public KafeDbContext()
             : base("name=KafeYS")
         {
-            //this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Kafe> Kafe { get; set; }

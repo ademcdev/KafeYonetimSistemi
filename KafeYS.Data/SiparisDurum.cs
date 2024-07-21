@@ -8,6 +8,8 @@ namespace KafeYS.Data
 {
     public enum SiparisDurum
     {
-        Aktif = 0, Odendi = 1, Iptal = 2
+        Aktif = 0,
+        Odendi = 1,
+        Iptal = 2
     }
 }

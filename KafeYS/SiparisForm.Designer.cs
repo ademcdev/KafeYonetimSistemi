@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SiparisForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.EkletoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuncelletoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SiparisİptaltoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GeriDonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.dataGridViewOrderDetails = new System.Windows.Forms.DataGridView();
             this.labelMasaNo = new System.Windows.Forms.Label();
@@ -43,11 +47,8 @@
             this.labelProduct = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.EkletoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.GuncelletoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SiparisİptaltoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.GeriDonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SiparisDetayId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SiparisId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrunId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrunAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrunAdet = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +74,44 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // EkletoolStripMenuItem
+            // 
+            this.EkletoolStripMenuItem.Image = global::KafeYS.Properties.Resources.placeholder;
+            this.EkletoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.EkletoolStripMenuItem.Name = "EkletoolStripMenuItem";
+            this.EkletoolStripMenuItem.Size = new System.Drawing.Size(136, 68);
+            this.EkletoolStripMenuItem.Text = "Ekle";
+            this.EkletoolStripMenuItem.Click += new System.EventHandler(this.EkletoolStripMenuItem_Click);
+            // 
+            // GuncelletoolStripMenuItem
+            // 
+            this.GuncelletoolStripMenuItem.Image = global::KafeYS.Properties.Resources.placeholder;
+            this.GuncelletoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.GuncelletoolStripMenuItem.Name = "GuncelletoolStripMenuItem";
+            this.GuncelletoolStripMenuItem.Size = new System.Drawing.Size(136, 68);
+            this.GuncelletoolStripMenuItem.Text = "Güncelle";
+            this.GuncelletoolStripMenuItem.Click += new System.EventHandler(this.GuncelletoolStripMenuItem_Click);
+            // 
+            // SiparisİptaltoolStripMenuItem
+            // 
+            this.SiparisİptaltoolStripMenuItem.Image = global::KafeYS.Properties.Resources.placeholder;
+            this.SiparisİptaltoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SiparisİptaltoolStripMenuItem.Name = "SiparisİptaltoolStripMenuItem";
+            this.SiparisİptaltoolStripMenuItem.Size = new System.Drawing.Size(136, 68);
+            this.SiparisİptaltoolStripMenuItem.Text = "Sipariş İptal";
+            this.SiparisİptaltoolStripMenuItem.Click += new System.EventHandler(this.SiparisİptaltoolStripMenuItem_Click);
+            // 
+            // GeriDonToolStripMenuItem
+            // 
+            this.GeriDonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.GeriDonToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GeriDonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("GeriDonToolStripMenuItem.Image")));
+            this.GeriDonToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.GeriDonToolStripMenuItem.Name = "GeriDonToolStripMenuItem";
+            this.GeriDonToolStripMenuItem.Size = new System.Drawing.Size(136, 68);
+            this.GeriDonToolStripMenuItem.Text = "Geri Dön";
+            this.GeriDonToolStripMenuItem.Click += new System.EventHandler(this.GeriDonToolStripMenuItem_Click);
+            // 
             // comboBoxCategory
             // 
             this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -90,6 +129,7 @@
             this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SiparisDetayId,
+            this.SiparisId,
             this.UrunId,
             this.UrunAd,
             this.UrunAdet,
@@ -230,57 +270,24 @@
             this.panel2.Size = new System.Drawing.Size(288, 97);
             this.panel2.TabIndex = 29;
             // 
-            // EkletoolStripMenuItem
-            // 
-            this.EkletoolStripMenuItem.Image = global::KafeYS.Properties.Resources.placeholder;
-            this.EkletoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.EkletoolStripMenuItem.Name = "EkletoolStripMenuItem";
-            this.EkletoolStripMenuItem.Size = new System.Drawing.Size(136, 68);
-            this.EkletoolStripMenuItem.Text = "Ekle";
-            this.EkletoolStripMenuItem.Click += new System.EventHandler(this.EkletoolStripMenuItem_Click);
-            // 
-            // GuncelletoolStripMenuItem
-            // 
-            this.GuncelletoolStripMenuItem.Image = global::KafeYS.Properties.Resources.placeholder;
-            this.GuncelletoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.GuncelletoolStripMenuItem.Name = "GuncelletoolStripMenuItem";
-            this.GuncelletoolStripMenuItem.Size = new System.Drawing.Size(136, 68);
-            this.GuncelletoolStripMenuItem.Text = "Güncelle";
-            this.GuncelletoolStripMenuItem.Click += new System.EventHandler(this.GuncelletoolStripMenuItem_Click);
-            // 
-            // SiparisİptaltoolStripMenuItem
-            // 
-            this.SiparisİptaltoolStripMenuItem.Image = global::KafeYS.Properties.Resources.placeholder;
-            this.SiparisİptaltoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.SiparisİptaltoolStripMenuItem.Name = "SiparisİptaltoolStripMenuItem";
-            this.SiparisİptaltoolStripMenuItem.Size = new System.Drawing.Size(136, 68);
-            this.SiparisİptaltoolStripMenuItem.Text = "Sipariş İptal";
-            this.SiparisİptaltoolStripMenuItem.Click += new System.EventHandler(this.SiparisİptaltoolStripMenuItem_Click);
-            // 
-            // GeriDonToolStripMenuItem
-            // 
-            this.GeriDonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.GeriDonToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.GeriDonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("GeriDonToolStripMenuItem.Image")));
-            this.GeriDonToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.GeriDonToolStripMenuItem.Name = "GeriDonToolStripMenuItem";
-            this.GeriDonToolStripMenuItem.Size = new System.Drawing.Size(136, 68);
-            this.GeriDonToolStripMenuItem.Text = "Geri Dön";
-            this.GeriDonToolStripMenuItem.Click += new System.EventHandler(this.GeriDonToolStripMenuItem_Click);
-            // 
             // SiparisDetayId
             // 
             this.SiparisDetayId.DataPropertyName = "SiparisDetayId";
             this.SiparisDetayId.HeaderText = "SiparisDetayId";
             this.SiparisDetayId.Name = "SiparisDetayId";
-            this.SiparisDetayId.Visible = false;
+            // 
+            // SiparisId
+            // 
+            this.SiparisId.DataPropertyName = "SiparisId";
+            this.SiparisId.HeaderText = "SiparisId";
+            this.SiparisId.Name = "SiparisId";
+            this.SiparisId.Width = 72;
             // 
             // UrunId
             // 
             this.UrunId.DataPropertyName = "UrunId";
             this.UrunId.HeaderText = "UrunId";
             this.UrunId.Name = "UrunId";
-            this.UrunId.Visible = false;
             this.UrunId.Width = 64;
             // 
             // UrunAd
@@ -350,6 +357,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SiparisDetayId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SiparisId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrunId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrunAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdet;

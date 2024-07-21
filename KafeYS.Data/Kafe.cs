@@ -15,6 +15,6 @@ namespace KafeYS.Data
         public int MasaNo { get; set; } = 1;
 
         [Required]
-        public int MasaAdet { get; set; } = 10;
+        public int MasaAdet { get; set; } = 40;
     }
 }

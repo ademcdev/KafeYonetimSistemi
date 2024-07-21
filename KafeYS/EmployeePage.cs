@@ -222,61 +222,8 @@ namespace KafeYS
             }
         }
 
-        private async void dataGridViewPersonel_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (e.ColumnIndex == dataGridViewPersonel.Columns["IsActive"].Index && e.RowIndex >= 0)
-            //{
-            //    DataGridViewCheckBoxCell cell = dataGridViewPersonel.Rows[e.RowIndex].Cells["IsActive"] as DataGridViewCheckBoxCell;
-
-            //    if (cell != null && cell.Value != null)
-            //    {
-            //        bool isChecked = (bool)cell.Value;
-            //        Console.WriteLine(isChecked);
-
-            //        var personelIdCell = dataGridViewPersonel.Rows[e.RowIndex].Cells["PersonelId"];
-            //        if (personelIdCell != null && personelIdCell.Value != null)
-            //        {
-            //            int personelId = (int)personelIdCell.Value;
-
-            //            var choosenPersonel = BListPersoneller.FirstOrDefault(p => p.PersonelId == personelId);
-
-            //            if (choosenPersonel != null)
-            //            {
-            //                choosenPersonel.IsActive = isChecked;
-            //                await db.SaveChangesAsync();
-            //            }
-            //        }
-            //    }
-            //}
-        }
-
         private void dataGridViewPersonel_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex == dataGridViewPersonel.Columns["IsActive"].Index && e.RowIndex >= 0)
-            //{
-            //    DataGridViewCheckBoxCell cell = dataGridViewPersonel.Rows[e.RowIndex].Cells["IsActive"] as DataGridViewCheckBoxCell;
-
-            //    if (cell != null && cell.Value != null)
-            //    {
-            //        bool isChecked = (bool)cell.Value;
-            //        Console.WriteLine(isChecked);
-
-            //        var personelIdCell = dataGridViewPersonel.Rows[e.RowIndex].Cells["PersonelId"];
-            //        if (personelIdCell != null && personelIdCell.Value != null)
-            //        {
-            //            int personelId = (int)personelIdCell.Value;
-
-            //            var choosenPersonel = BListPersoneller.FirstOrDefault(p => p.PersonelId == personelId);
-
-            //            if (choosenPersonel != null)
-            //            {
-            //                choosenPersonel.IsActive = isChecked;
-            //                db.SaveChanges();
-            //            }
-            //        }
-            //    }
-            //}
-
             if (e.ColumnIndex == dataGridViewPersonel.Columns["IsActive"].Index && e.RowIndex >= 0)
             {
                 dataGridViewPersonel.EndEdit();
