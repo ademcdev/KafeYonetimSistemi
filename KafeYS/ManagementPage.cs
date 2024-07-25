@@ -63,6 +63,7 @@ namespace KafeYS
         private void LoadReportData()
         {
             LoadTotal();
+            LoadSalesByCategory();
         }
 
         private void LoadTotal()
@@ -72,9 +73,9 @@ namespace KafeYS
             var totalOrders = db.Siparisler.Count();
             //var totalIncome = db.Siparisler.Sum(s => s.ToplamTutar) + " TL";
 
-            labelTotalProducts.Text = totalOrders.ToString();
+            labelTotalProducts.Text = totalProducts.ToString();
             labelTotalPersonels.Text = totalPersonels.ToString();
-            labelTotalOrders.Text = totalPersonels.ToString();
+            labelTotalOrders.Text = totalOrders.ToString();
             //labelIncome.Text = totalIncome.ToString();
         }
 

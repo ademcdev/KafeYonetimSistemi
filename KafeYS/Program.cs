@@ -16,7 +16,7 @@ namespace KafeYS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ManagementPage());
+            Application.Run(new LoginForm());
         }
     }
 }

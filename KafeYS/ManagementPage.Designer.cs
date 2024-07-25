@@ -36,17 +36,19 @@
             this.raporHazırlaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çıkışYapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonReport = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelTotalOrders = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.buttonReport = new System.Windows.Forms.Button();
             this.dataGridViewSiparis = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelTotalProducts = new System.Windows.Forms.Label();
             this.labelTotalPersonels = new System.Windows.Forms.Label();
-            this.labelTotalOrders = new System.Windows.Forms.Label();
-            this.labelIncome = new System.Windows.Forms.Label();
+            this.labelTotalProducts = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSiparis)).BeginInit();
@@ -62,9 +64,9 @@
             this.geçmişSiparişlerToolStripMenuItem,
             this.raporHazırlaToolStripMenuItem,
             this.çıkışYapToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(1613, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(1011, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(190, 1038);
+            this.menuStrip1.Size = new System.Drawing.Size(190, 733);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,54 +123,29 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.labelTotalOrders);
-            this.panel1.Controls.Add(this.labelIncome);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.buttonReport);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1360, 0);
+            this.panel1.Location = new System.Drawing.Point(758, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(253, 1038);
+            this.panel1.Size = new System.Drawing.Size(253, 733);
             this.panel1.TabIndex = 3;
             // 
-            // buttonReport
+            // labelTotalOrders
             // 
-            this.buttonReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonReport.Location = new System.Drawing.Point(26, 321);
-            this.buttonReport.Name = "buttonReport";
-            this.buttonReport.Size = new System.Drawing.Size(217, 84);
-            this.buttonReport.TabIndex = 26;
-            this.buttonReport.Text = "Rapor";
-            this.buttonReport.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(26, 54);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 35);
-            this.dateTimePicker1.TabIndex = 32;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(26, 193);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 35);
-            this.dateTimePicker2.TabIndex = 33;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(21, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 25);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Başlangıç Tarihi:";
+            this.labelTotalOrders.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelTotalOrders.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelTotalOrders.ForeColor = System.Drawing.Color.White;
+            this.labelTotalOrders.Location = new System.Drawing.Point(493, 47);
+            this.labelTotalOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTotalOrders.Name = "labelTotalOrders";
+            this.labelTotalOrders.Size = new System.Drawing.Size(232, 224);
+            this.labelTotalOrders.TabIndex = 38;
+            this.labelTotalOrders.Text = "-";
+            this.labelTotalOrders.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -180,82 +157,128 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Bitiş Tarihi:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(21, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(172, 25);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Başlangıç Tarihi:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(26, 193);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 35);
+            this.dateTimePicker2.TabIndex = 33;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(26, 54);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 35);
+            this.dateTimePicker1.TabIndex = 32;
+            // 
+            // buttonReport
+            // 
+            this.buttonReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonReport.Location = new System.Drawing.Point(26, 321);
+            this.buttonReport.Name = "buttonReport";
+            this.buttonReport.Size = new System.Drawing.Size(217, 84);
+            this.buttonReport.TabIndex = 26;
+            this.buttonReport.Text = "Rapor";
+            this.buttonReport.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewSiparis
             // 
+            this.dataGridViewSiparis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewSiparis.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewSiparis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSiparis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewSiparis.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewSiparis.Name = "dataGridViewSiparis";
-            this.dataGridViewSiparis.Size = new System.Drawing.Size(1360, 1038);
+            this.dataGridViewSiparis.Size = new System.Drawing.Size(758, 733);
             this.dataGridViewSiparis.TabIndex = 4;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.labelTotalOrders);
             this.panel2.Controls.Add(this.labelTotalPersonels);
             this.panel2.Controls.Add(this.labelTotalProducts);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 758);
+            this.panel2.Location = new System.Drawing.Point(0, 453);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1360, 280);
+            this.panel2.Size = new System.Drawing.Size(758, 280);
             this.panel2.TabIndex = 5;
-            // 
-            // labelTotalProducts
-            // 
-            this.labelTotalProducts.BackColor = System.Drawing.SystemColors.Highlight;
-            this.labelTotalProducts.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelTotalProducts.ForeColor = System.Drawing.Color.White;
-            this.labelTotalProducts.Location = new System.Drawing.Point(13, 18);
-            this.labelTotalProducts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTotalProducts.Name = "labelTotalProducts";
-            this.labelTotalProducts.Size = new System.Drawing.Size(232, 253);
-            this.labelTotalProducts.TabIndex = 36;
-            this.labelTotalProducts.Text = "-";
-            this.labelTotalProducts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTotalPersonels
             // 
             this.labelTotalPersonels.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelTotalPersonels.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelTotalPersonels.ForeColor = System.Drawing.Color.White;
-            this.labelTotalPersonels.Location = new System.Drawing.Point(476, 18);
+            this.labelTotalPersonels.Location = new System.Drawing.Point(253, 47);
             this.labelTotalPersonels.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTotalPersonels.Name = "labelTotalPersonels";
-            this.labelTotalPersonels.Size = new System.Drawing.Size(232, 253);
+            this.labelTotalPersonels.Size = new System.Drawing.Size(232, 224);
             this.labelTotalPersonels.TabIndex = 37;
             this.labelTotalPersonels.Text = "-";
             this.labelTotalPersonels.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelTotalOrders
+            // labelTotalProducts
             // 
-            this.labelTotalOrders.BackColor = System.Drawing.SystemColors.Highlight;
-            this.labelTotalOrders.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelTotalOrders.ForeColor = System.Drawing.Color.White;
-            this.labelTotalOrders.Location = new System.Drawing.Point(11, 740);
-            this.labelTotalOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTotalOrders.Name = "labelTotalOrders";
-            this.labelTotalOrders.Size = new System.Drawing.Size(232, 253);
-            this.labelTotalOrders.TabIndex = 38;
-            this.labelTotalOrders.Text = "-";
-            this.labelTotalOrders.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTotalProducts.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelTotalProducts.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelTotalProducts.ForeColor = System.Drawing.Color.White;
+            this.labelTotalProducts.Location = new System.Drawing.Point(13, 47);
+            this.labelTotalProducts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTotalProducts.Name = "labelTotalProducts";
+            this.labelTotalProducts.Size = new System.Drawing.Size(232, 224);
+            this.labelTotalProducts.TabIndex = 36;
+            this.labelTotalProducts.Text = "-";
+            this.labelTotalProducts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelIncome
+            // label1
             // 
-            this.labelIncome.BackColor = System.Drawing.SystemColors.Highlight;
-            this.labelIncome.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelIncome.ForeColor = System.Drawing.Color.White;
-            this.labelIncome.Location = new System.Drawing.Point(11, 472);
-            this.labelIncome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelIncome.Name = "labelIncome";
-            this.labelIncome.Size = new System.Drawing.Size(232, 253);
-            this.labelIncome.TabIndex = 39;
-            this.labelIncome.Text = "-";
-            this.labelIncome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(229, 29);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Toplam Ürün Sayısı:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(252, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(229, 29);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Toplam Ürün Sayısı:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(492, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(229, 29);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "Toplam Ürün Sayısı:";
             // 
             // ManagementPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1803, 1038);
+            this.ClientSize = new System.Drawing.Size(1201, 733);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridViewSiparis);
@@ -270,6 +293,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSiparis)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,6 +318,8 @@
         private System.Windows.Forms.Label labelTotalProducts;
         private System.Windows.Forms.Label labelTotalOrders;
         private System.Windows.Forms.Label labelTotalPersonels;
-        private System.Windows.Forms.Label labelIncome;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
